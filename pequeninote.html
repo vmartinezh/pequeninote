@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pequeninote | Suporte Pedagógico</title>
+<!-- ================================================
+  FAVICON
+  Substitua o caminho abaixo pelo arquivo do seu favicon.
+  Exemplo: se o arquivo se chama "favicon.png" e está na
+  mesma pasta do HTML, deixe href="favicon.png"
+  Formatos aceitos: .png, .ico, .svg
+================================================ -->
+<link rel="icon" type="image/png" href="C:\Users\vicen\Downloads\Prancheta 8.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --caramelo: #D0AC95;
+  --caramelo-escuro: #a07858;
+  --caramelo-claro: #f5ede6;
+  --caramelo-medio: #e2c8b5;
+  --cinza-bege: #D3D1CD;
+  --cinza-bege-claro: #f0efec;
+  --laranja: #D0AC95; 
+  --laranja-escuro: #a07858;
+  --laranja-claro: #fff3d6;
+  --branco: #FDFCFB;
+  --cinza-texto: #3d3a36;
+  --cinza-suave: #7a7672;
+  --preto: #1e1b18;
+  --radius: 18px;
+  --sombra: 0 4px 28px rgba(0,0,0,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--branco);
+  color: var(--preto);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .bree {
+  font-family: 'Bree Serif', serif;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(253,252,251,0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(208,172,149,0.18);
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.nav-logo {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.35rem;
+  color: var(--caramelo-escuro);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ================================================
+  LOGO NA NAVBAR
+  Substitua o src abaixo pelo caminho do seu arquivo de logo.
+  Exemplo: src="logo.png"
+  A imagem será exibida com 38px de altura.
+  Se preferir apenas o texto sem imagem, pode remover a tag <img>.
+================================================ -->
+.nav-logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+  /* Se quiser esconder o texto e mostrar só a imagem,
+     adicione: ~ e remova o <span> no HTML */
+
+
+.nav-logo-placeholder {
+  /* Este bloco aparece enquanto você não tem o logo ainda.
+     Quando adicionar o <img>, pode remover este div no HTML. */
+  width: 38px; height: 38px;
+  background: var(--caramelo);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bree Serif', serif;
+  font-size: 1rem;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--cinza-texto);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--caramelo-escuro); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ===== LANGUAGE SWITCHER ===== */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  background: var(--cinza-bege-claro);
+  border-radius: 50px;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid rgba(208,172,149,0.25);
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 50px;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cinza-suave);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.02em;
+}
+
+.lang-btn.active {
+  background: var(--caramelo);
+  color: white;
+  box-shadow: 0 2px 8px rgba(208,172,149,0.4);
+}
+
+.lang-btn:not(.active):hover {
+  color: var(--caramelo-escuro);
+  background: var(--caramelo-claro);
+}
+
+.flag { font-size: 1.05rem; }
+
+.nav-cta {
+  background: var(--laranja);
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.nav-cta:hover { background: var(--laranja-escuro); transform: translateY(-1px); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 2.5rem 70px;
+  background: linear-gradient(135deg, var(--caramelo-claro) 0%, #faf5f0 45%, var(--branco) 75%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -8%;
+  top: 8%;
+  width: 580px; height: 580px;
+  background: radial-gradient(circle, rgba(208,172,149,0.12) 0%, transparent 68%);
+  border-radius: 50%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  left: -4%;
+  bottom: -4%;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(255,159,0,0.08) 0%, transparent 68%);
+  border-radius: 50%;
+}
+
+.hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid rgba(208,172,149,0.3);
+  color: var(--caramelo-escuro);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(208,172,149,0.15);
+}
+
+.hero-badge::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--caramelo);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.35); }
+}
+
+.hero h1 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 400;
+  color: var(--preto);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--caramelo-escuro);
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--cinza-texto);
+  margin-bottom: 2rem;
+  max-width: 480px;
+  line-height: 1.85;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--laranja);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover { background: var(--laranja-escuro); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,159,0,0.3); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--caramelo-escuro);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 2px solid var(--caramelo);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.btn-outline:hover { background: var(--caramelo-claro); }
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.h-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: var(--sombra);
+  border: 1px solid rgba(208,172,149,0.15);
+}
+
+.h-card-behind {
+  position: absolute;
+  width: 85%;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -16px;
+  z-index: -1;
+  background: var(--caramelo-medio);
+  opacity: 0.5;
+  border-radius: var(--radius);
+  height: 40px;
+}
+
+.h-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.h-card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--caramelo-escuro);
+  margin-bottom: 0.4rem;
+}
+
+.h-card-title {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.15rem;
+  color: var(--preto);
+  margin-bottom: 1rem;
+}
+
+.h-card-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  background: var(--caramelo-claro);
+  color: var(--caramelo-escuro);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 50px;
+}
+
+/* ===== SEÇÕES ===== */
+section { padding: 86px 2.5rem; }
+.section-inner { max-width: 1120px; margin: 0 auto; }
+
+.section-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--caramelo-escuro);
+  margin-bottom: 0.7rem;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  color: var(--preto);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  font-size: 1rem;
+  color: var(--cinza-suave);
+  max-width: 1560px;
+  margin-bottom: 3rem;
+  line-height: 1.85;
+}
+
+/* ===== RAYSSA / SOBRE ===== */
+#sobre { background: white; }
+
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.rayssa-card {
+  background: var(--caramelo-claro);
+  border-radius: var(--radius);
+  padding: 2rem;
+  border: 1px solid rgba(208,172,149,0.25);
+  margin-bottom: 1.5rem;
+}
+
+.rayssa-avatar {
+  width: 80px; height: 80px;
+  background: var(--caramelo);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bree Serif', serif;
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 1rem;
+  /* Se quiser colocar foto da Rayssa, use uma tag <img> no lugar */
+}
+
+.rayssa-nome {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.3rem;
+  color: var(--preto);
+  margin-bottom: 0.2rem;
+}
+
+.rayssa-cargo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--caramelo-escuro);
+  margin-bottom: 1rem;
+}
+
+.rayssa-bio {
+  font-size: 0.95rem;
+  color: var(--cinza-texto);
+  line-height: 1.85;
+}
+
+.diferenciais-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.diferencial-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--cinza-texto);
+  background: white;
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(208,172,149,0.2);
+}
+
+.diferencial-item::before {
+  content: '✦';
+  color: var(--laranja);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.sobre-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.2rem 1.3rem;
+  background: var(--cinza-bege-claro);
+  border-radius: 12px;
+  border: 1px solid rgba(211,209,205,0.5);
+  transition: background 0.2s;
+}
+
+.feature-item:hover { background: var(--caramelo-claro); }
+
+.feature-num {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: var(--caramelo);
+  color: white;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.feature-text h4 {
+  font-family: 'Bree Serif', serif;
+  font-size: 0.97rem;
+  font-weight: 400;
+  color: var(--preto);
+  margin-bottom: 0.25rem;
+}
+
+.feature-text p {
+  font-size: 0.87rem;
+  color: var(--cinza-suave);
+  line-height: 1.6;
+}
+
+/* ===== COMO FUNCIONA ===== */
+#como { background: var(--cinza-bege-claro); }
+
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+
+.steps-row::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--caramelo-medio), var(--caramelo));
+  z-index: 0;
+}
+
+.step-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(208,172,149,0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.step-card:hover { transform: translateY(-4px); box-shadow: var(--sombra); }
+
+.step-circle {
+  width: 64px; height: 64px;
+  background: var(--caramelo);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+  font-family: 'Bree Serif', serif;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.step-card h3 {
+  font-family: 'Bree Serif', serif;
+  font-size: 0.97rem;
+  font-weight: 400;
+  color: var(--preto);
+  margin-bottom: 0.5rem;
+}
+
+.step-card p {
+  font-size: 0.85rem;
+  color: var(--cinza-suave);
+  line-height: 1.65;
+}
+
+/* ===== ATIVIDADES / O QUE FAZ ===== */
+#atividades { background: white; }
+
+.atividades-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ativ-card {
+  background: var(--caramelo-claro);
+  border-radius: var(--radius);
+  padding: 1.8rem 1.5rem;
+  border: 1px solid rgba(208,172,149,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ativ-card:hover { transform: translateY(-3px); box-shadow: var(--sombra); }
+
+.ativ-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+.ativ-card h3 {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--preto);
+  margin-bottom: 0.6rem;
+}
+
+.ativ-card p {
+  font-size: 0.88rem;
+  color: var(--cinza-texto);
+  line-height: 1.7;
+}
+
+.ativ-lista {
+  list-style: none;
+  margin-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ativ-lista li {
+  font-size: 0.85rem;
+  color: var(--cinza-suave);
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+}
+
+.ativ-lista li::before {
+  content: '›';
+  color: var(--caramelo-escuro);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ===== PREÇOS ===== */
+#precos { background: var(--cinza-bege-claro); }
+
+.precos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.preco-card {
+  border: 1.5px solid rgba(208,172,149,0.2);
+  border-radius: var(--radius);
+  padding: 2rem 1.6rem;
+  position: relative;
+  transition: all 0.25s;
+  background: white;
+}
+
+.preco-card:hover { border-color: var(--caramelo); box-shadow: 0 8px 32px rgba(208,172,149,0.18); }
+
+.preco-card.destaque {
+  border: 2.5px solid var(--caramelo);
+  box-shadow: 0 8px 32px rgba(208,172,149,0.2);
+}
+
+.preco-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--laranja);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 18px;
+  border-radius: 50px;
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.preco-emoji { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+
+.preco-nome {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--preto);
+  margin-bottom: 0.3rem;
+}
+
+.preco-desc {
+  font-size: 0.87rem;
+  color: var(--cinza-suave);
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.preco-valor {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 0.25rem;
+}
+
+.preco-cifra {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--caramelo-escuro);
+  margin-bottom: 0.45rem;
+}
+
+.preco-num {
+  font-family: 'Bree Serif', serif;
+  font-size: 2.8rem;
+  color: var(--caramelo-escuro);
+  line-height: 1;
+}
+
+.preco-num.gratis {
+  font-size: 2rem;
+  color: var(--laranja-escuro);
+}
+
+.preco-period {
+  font-size: 0.82rem;
+  color: var(--cinza-suave);
+  margin-bottom: 0.15rem;
+}
+
+.preco-divisor {
+  border: none;
+  border-top: 1px solid rgba(211,209,205,0.6);
+  margin: 1.2rem 0;
+}
+
+.preco-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.preco-lista li {
+  font-size: 0.88rem;
+  color: var(--cinza-texto);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.preco-lista li::before {
+  content: '✓';
+  color: var(--caramelo-escuro);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ===== CONTATO ===== */
+#contato { background: var(--preto); }
+
+#contato .section-tag { color: var(--caramelo-medio); }
+#contato .section-title { color: white; }
+#contato .section-sub { color: rgba(255,255,255,0.55); }
+
+.contato-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contato-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.contato-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 1.2rem;
+  border: 1px solid rgba(255,255,255,0.09);
+}
+
+.contato-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: var(--caramelo);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+
+.contato-info label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--caramelo-medio);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.contato-info p {
+  font-size: 0.95rem;
+  color: white;
+  font-weight: 500;
+}
+
+.contato-form {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--cinza-texto);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 14px;
+  border: 1.5px solid rgba(208,172,149,0.3);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--preto);
+  background: white;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--caramelo);
+  box-shadow: 0 0 0 3px rgba(208,172,149,0.15);
+}
+
+.form-group textarea { min-height: 90px; resize: vertical; }
+
+.form-title {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.2rem;
+  color: var(--preto);
+  margin-bottom: 1.2rem;
+  font-weight: 400;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #100f0d;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 2.2rem;
+  font-size: 0.85rem;
+}
+
+footer a { color: var(--caramelo-medio); text-decoration: none; }
+
+footer .footer-logo {
+  font-family: 'Bree Serif', serif;
+  font-size: 1.2rem;
+  color: var(--caramelo);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hero-inner, .sobre-grid, .contato-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .steps-row { grid-template-columns: 1fr 1fr; }
+  .steps-row::before { display: none; }
+  .precos-grid { grid-template-columns: 1fr; }
+  .atividades-grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .diferenciais-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 500px) {
+  nav { padding: 0 1rem; }
+  section { padding: 60px 1.2rem; }
+  .atividades-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <a href="#inicio" class="nav-logo">
+
+    <!--
+      LOGO NA NAVBAR
+      Troque o comentário abaixo pelo código da imagem quando tiver o arquivo:
+
+      <img src="COLOQUE_AQUI_O_CAMINHO_DO_LOGO.png" alt="Pequeninote logo">
+
+      Enquanto não tiver a imagem, o bloco abaixo mostra um placeholder com as iniciais.
+    -->
+    <div class="nav-logo-placeholder">
+      <img src="C:\Users\vicen\Downloads\Prancheta 8.png" alt="icono" width="45" height="45">
+    </div>
+    <span>Pequeninote</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#sobre" data-i18n="nav-sobre">Quem somos</a></li>
+    <li><a href="#atividades" data-i18n="nav-ativ">O que fazemos</a></li>
+    <li><a href="#como" data-i18n="nav-como">Como funciona</a></li>
+    <li><a href="#precos" data-i18n="nav-precos">Preços</a></li>
+    <li><a href="#contato" data-i18n="nav-contato">Contato</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-switcher" role="group" aria-label="Seletor de idioma">
+      <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')" aria-pressed="true">
+        <span class="flag">🇧🇷</span> PT
+      </button>
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')" aria-pressed="false">
+        <span class="flag">🇨🇱</span> ES
+      </button>
+    </div>
+    <a href="#contato" class="nav-cta" data-i18n="nav-cta-btn">Aula experimental gratuita</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero-badge">Educação com afeto e dedicação</div>
+      <h1 data-i18n="hero-h1">O aprendizado de cada criança merece um olhar único.</h1>
+      <p class="hero-desc" data-i18n="hero-desc">Nós oferecemos um Acompanhamento Educacional Individualizado, com paciência, carinho e compromisso real com o desenvolvimento de cada aluno.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn-primary" data-i18n="hero-cta1">Quero a aula experimental</a>
+        <a href="#sobre" class="btn-outline" data-i18n="hero-cta2">Conheça o projeto</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="h-card">
+          <div class="h-card-label" data-i18n="hcard-label">Acompanhamento ativo</div>
+          <div class="h-card-title" data-i18n="hcard-title">Plano Pedagógico personalizado para cada criança</div>
+          <div class="h-card-chips">
+            <span class="chip" data-i18n="chip1">Alfabetização</span>
+            <span class="chip" data-i18n="chip2">Leitura</span>
+            <span class="chip" data-i18n="chip3">Escrita</span>
+            <span class="chip" data-i18n="chip4">Matemática</span>
+          </div>
+        </div>
+        <div class="h-card-behind"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOBRE / RAYSSA ===== -->
+<section id="sobre">
+  <div class="section-inner">
+    <div class="sobre-grid">
+      <div>
+        <div class="section-tag" data-i18n="sobre-tag">Quem está por trás do Pequeninote</div>
+        <h2 class="section-title" data-i18n="sobre-titulo">Oi, eu sou a Rayssa 👋</h2>
+
+        <div class="rayssa-card">
+          <div class="rayssa-avatar">R</div>
+          <div class="rayssa-nome">Rayssa Peres</div>
+          <div class="rayssa-cargo" data-i18n="rayssa-cargo">Pedagoga · Orientação Educacional</div>
+          <p style="text-align: justify;" class="rayssa-bio" data-i18n="rayssa-bio">Sou pedagoga apaixonada pelo desenvolvimento infantil. Meu trabalho vai além do ensino — é sobre construir vínculos, fortalecer a autoconfiança e caminhar junto com cada criança e sua família. Acredito que a educação transforma vidas quando é oferecida com afeto, paciência e responsabilidade.</p>
+        </div>
+
+        <p style="font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--caramelo-escuro); margin-bottom:0.8rem;" data-i18n="diferenciais-titulo">Meu diferencial</p>
+        <div class="diferenciais-grid">
+          <div class="diferencial-item" data-i18n="dif1">Paciência e afeto</div>
+          <div class="diferencial-item" data-i18n="dif2">Dedicação individualizada</div>
+          <div class="diferencial-item" data-i18n="dif3">Responsabilidade e compromisso</div>
+          <div class="diferencial-item" data-i18n="dif4">Respeito ao ritmo de cada criança</div>
+          <div class="diferencial-item" data-i18n="dif5">Ambiente acolhedor e seguro</div>
+          <div class="diferencial-item" data-i18n="dif6">Parceria próxima com a família</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-tag" data-i18n="sobre-areas-tag">Áreas de atuação</div>
+        <div class="sobre-features">
+          <div class="feature-item">
+            <div class="feature-num">01</div>
+            <div class="feature-text">
+              <h4 data-i18n="feat1-titulo">Acompanhamento Pedagógico</h4>
+              <p data-i18n="feat1-desc">Apoio nas dificuldades de aprendizagem e fortalecimento das habilidades fundamentais para o dia a dia na escola.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-num">02</div>
+            <div class="feature-text">
+              <h4 data-i18n="feat2-titulo">Planejamento de atividades</h4>
+              <p data-i18n="feat2-desc">Atividades personalizadas por idade e nível de aprendizagem, tornando o estudo mais leve, criativo e eficiente.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-num">03</div>
+            <div class="feature-text">
+              <h4 data-i18n="feat3-titulo">Comunicação com os pais</h4>
+              <p data-i18n="feat3-desc">Comunicação transparente e próxima com a família, compartilhando avanços, dificuldades e orientações pedagógicas.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-num">04</div>
+            <div class="feature-text">
+              <h4 data-i18n="feat4-titulo">Conteúdo educacional</h4>
+              <p data-i18n="feat4-desc">Materiais, vídeos e orientações para pais e responsáveis sobre aprendizagem e desenvolvimento infantil.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O QUE FAZ / ATIVIDADES ===== -->
+<section id="atividades">
+  <div class="section-inner">
+    <div class="section-tag" data-i18n="ativ-tag">O que trabalhamos juntos</div>
+    <h2 class="section-title" data-i18n="ativ-titulo">Tudo pensado para o desenvolvimento da criança</h2>
+    <p class="section-sub" data-i18n="ativ-sub">Cada sessão é planejada com atenção e cuidado, combinando aprendizado e ludicidade para que a criança se sinta motivada a crescer.</p>
+    <div class="atividades-grid">
+      <div class="ativ-card">
+<!--         <span class="ativ-emoji">📚</span>-->
+        <h3 data-i18n="ativ1-titulo">📚 Leitura e Escrita</h3>
+        <p data-i18n="ativ1-desc">Desenvolvimento da alfabetização e fluência leitora com estratégias adaptadas ao ritmo de cada criança.</p>
+        <ul class="ativ-lista">
+          <li data-i18n="ativ1-i1">Alfabetização inicial</li>
+          <li data-i18n="ativ1-i2">Leitura e interpretação</li>
+          <li data-i18n="ativ1-i3">Produção de texto</li>
+        </ul>
+      </div>
+
+      <div class="ativ-card">
+        <h3 data-i18n="ativ2-titulo">🧠 Concentração e Raciocínio</h3>
+        <p data-i18n="ativ2-desc">Atividades que estimulam a atenção, a memória e o raciocínio lógico de forma prazerosa.</p>
+        <ul class="ativ-lista">
+          <li data-i18n="ativ2-i1">Exercícios de concentração</li>
+          <li data-i18n="ativ2-i2">Desenvolvimento cognitivo</li>
+          <li data-i18n="ativ2-i3">Raciocínio e matemática</li>
+        </ul>
+      </div>
+
+      <div class="ativ-card">
+        <h3 data-i18n="ativ3-titulo"> ✏️ Coordenação Motora</h3>
+        <p data-i18n="ativ3-desc">Estimulação da motricidade fina e ampla através de atividades lúdicas e práticas.</p>
+        <ul class="ativ-lista">
+          <li data-i18n="ativ3-i1">Atividades manuais</li>
+          <li data-i18n="ativ3-i2">Exercícios de escrita</li>
+          <li data-i18n="ativ3-i3">Brincadeiras dirigidas</li>
+        </ul>
+      </div>
+
+      <div class="ativ-card">
+        <h3 data-i18n="ativ4-titulo">🌱 Autonomia e Confiança</h3>
+        <p data-i18n="ativ4-desc">Incentivo ao desenvolvimento da autoestima e da autonomia, para que a criança acredite em si mesma.</p>
+        <ul class="ativ-lista">
+          <li data-i18n="ativ4-i1">Resolução de problemas</li>
+          <li data-i18n="ativ4-i2">Tomada de decisões</li>
+          <li data-i18n="ativ4-i3">Autoconfiança e organização</li>
+        </ul>
+      </div>
+
+      <div class="ativ-card">
+        <h3 data-i18n="ativ5-titulo">🎨 Atividades Lúdicas</h3>
+        <p data-i18n="ativ5-desc">Aprendizado através do brincar, tornando cada sessão uma experiência divertida e significativa.</p>
+        <ul class="ativ-lista">
+          <li data-i18n="ativ5-i1">Jogos educativos</li>
+          <li data-i18n="ativ5-i2">Arte e criatividade</li>
+          <li data-i18n="ativ5-i3">Brincadeiras pedagógicas</li>
+        </ul>
+      </div>
+
+      <div class="ativ-card"> 
+        <h3 data-i18n="ativ6-titulo">💬 Comunicação e Interação</h3>
+        <p data-i18n="ativ6-desc">Estímulo à expressão oral, comunicação e interação social de forma natural e acolhedora.</p>
+        <ul class="ativ-lista">
+          <li data-i18n="ativ6-i1">Desenvolvimento da fala</li>
+          <li data-i18n="ativ6-i2">Expressão de emoções</li>
+          <li data-i18n="ativ6-i3">Participação ativa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMO FUNCIONA ===== -->
+<section id="como">
+  <div class="section-inner">
+    <div class="section-tag" data-i18n="como-tag">Processo</div>
+    <h2 class="section-title" data-i18n="como-titulo">Como funciona o atendimento</h2>
+    <p class="section-sub" data-i18n="como-sub">Simples, acolhedor e transparente, para que a família se sinta segura em cada etapa.</p>
+
+    <div class="steps-row">
+      <div class="step-card">
+        <div class="step-circle">1</div>
+        <h3 data-i18n="step1-titulo">Aula experimental</h3>
+        <p data-i18n="step1-desc">A família agenda a aula experimental gratuita para conhecer o trabalho da Professora e ver como a criança se adapta.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">2</div>
+        <h3 data-i18n="step2-titulo">Avaliação inicial</h3>
+        <p data-i18n="step2-desc">Observamos as habilidades e necessidades da criança para entender o melhor ponto de partida.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">3</div>
+        <h3 data-i18n="step3-titulo">Plano personalizado</h3>
+        <p data-i18n="step3-desc">Criamos um plano de atividades exclusivo, adaptado ao ritmo, à idade e ao perfil de aprendizagem da criança.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">4</div>
+        <h3 data-i18n="step4-titulo">Acompanhamento contínuo</h3>
+        <p data-i18n="step4-desc">Sessões regulares com comunicação próxima com a família, falando sobre cada avanço e conquista.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREÇOS ===== -->
+<section id="precos">
+  <div class="section-inner">
+    <div class="section-tag" data-i18n="precos-tag">Investimento</div>
+    <h2 class="section-title" data-i18n="precos-titulo">Planos e valores</h2>
+    <p class="section-sub" data-i18n="precos-sub">Comece sem compromisso — a primeira aula é gratuita, para você conhecer e sentir o Pequeninote.</p>
+
+    <div class="precos-grid">
+
+      <!-- Aula Experimental -->
+      <div class="preco-card">
+        <div class="preco-nome" data-i18n="p1-nome">🎁 Aula Experimental</div>
+        <div class="preco-desc" data-i18n="p1-desc">Voltado a famílias interessadas em conhecer nossa abordagem antes de iniciar o Acompanhamento.</div>
+        <div class="preco-valor">
+          <span class="preco-num gratis" data-i18n="p1-valor">Gratuita</span>
+        </div>
+        <div class="preco-period" data-i18n="p1-periodo">uma vez, sem compromisso</div>
+        <hr class="preco-divisor">
+        <ul class="preco-lista">
+          <li data-i18n="p1-i1">1 aula completa (sem custo)</li>
+          <li data-i18n="p1-i2">Conversa inicial com os pais</li>
+          <li data-i18n="p1-i3">Observação do perfil da criança</li>
+          <li data-i18n="p1-i4">Sem necessidade de cadastro prévio</li>
+        </ul>
+        <a href="#contato" class="btn-outline" style="width:100%; text-align:center; display:block;" data-i18n="p1-cta">Agendar aula grátis</a>
+      </div>
+
+      <!-- 1 aula por semana -->
+      <div class="preco-card destaque">
+        <div class="preco-badge" data-i18n="p2-badge">Mais popular</div>
+        <div class="preco-nome" data-i18n="p2-nome">⭐ 1 aula por semana</div>
+        <div class="preco-desc" data-i18n="p2-desc">Acompanhamento semanal consistente para evolução gradual e duradoura.</div>
+        <div class="preco-valor">
+          <span class="preco-cifra">R$</span>
+          <span class="preco-num" data-i18n="p2-valor">200</span>
+        </div>
+        <div class="preco-period" data-i18n="p2-periodo">por semana · 1 aula</div>
+        <hr class="preco-divisor">
+        <ul class="preco-lista">
+          <li data-i18n="p2-i1">1 aula individuais por semana</li>
+          <li data-i18n="p2-i2">Plano pedagógico personalizado</li>
+          <li data-i18n="p2-i3">Atividades adaptadas ao aluno</li>
+          <li data-i18n="p2-i4">Retorno para os pais por WhatsApp</li>
+        </ul>
+        <a href="#contato" class="btn-primary" style="width:100%; text-align:center; display:block;" data-i18n="p-cta">Começar agora</a>
+      </div>
+
+      <!-- 2 aulas por semana -->
+      <div class="preco-card">
+        <div class="preco-nome" data-i18n="p3-nome">🚀 2 aulas por semana</div>
+        <div class="preco-desc" data-i18n="p3-desc">Para crianças que precisam de mais atenção e um ritmo de evolução mais acelerado.</div>
+        <div class="preco-valor">
+          <span class="preco-cifra">R$</span>
+          <span class="preco-num" data-i18n="p3-valor">400</span>
+        </div>
+        <div class="preco-period" data-i18n="p3-periodo">por semana · 2 aulas</div>
+        <hr class="preco-divisor">
+        <ul class="preco-lista">
+          <li data-i18n="p3-i1">2 aulas individuais por semana</li>
+          <li data-i18n="p3-i2">Plano pedagógico personalizado</li>
+          <li data-i18n="p3-i3">Atividades adaptadas ao aluno</li>
+          <li data-i18n="p3-i4">Retorno frequente para os pais</li>
+          <li data-i18n="p3-i5">Acompanhamento de evolução mais rápido</li>
+        </ul>
+        <a href="#contato" class="btn-outline" style="width:100%; text-align:center; display:block;" data-i18n="p-cta">Começar agora</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<section id="contato">
+  <div class="section-inner">
+    <div class="section-tag" data-i18n="contato-tag">Fale com a Rayssa</div>
+    <h2 class="section-title" data-i18n="contato-titulo">Vamos conversar?</h2>
+    <p class="section-sub" data-i18n="contato-sub">Tire suas dúvidas ou agende já a aula experimental gratuita. Estamos no Brasil e no Chile.</p>
+
+    <div class="contato-grid">
+      <div class="contato-items">
+
+        <div class="contato-item">
+          <div class="contato-icon">📞</div>
+          <div class="contato-info">
+            <label data-i18n="c-tel-label">Telefone — Brasil</label>
+            <p>+55 91 8590-0628</p>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-icon">📞</div>
+          <div class="contato-info">
+            <label data-i18n="c-tel-chile-label">Teléfono — Chile</label>
+            <p>+56 9 3461 5972</p>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-icon">💬</div>
+          <div class="contato-info">
+            <label>WhatsApp</label>
+            <p>+55 91 8590-0628</p>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-icon">📧</div>
+          <div class="contato-info">
+            <label data-i18n="c-email-label">E-mail</label>
+            <p>Pequeninote@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="contato-item">
+          <div class="contato-icon">🕐</div>
+          <div class="contato-info">
+            <label data-i18n="c-hora-label">Horário de atendimento</label>
+            <p data-i18n="c-hora-val">Segunda a sexta, 9h-18h</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="contato-form">
+        <div class="form-title" data-i18n="form-titulo">Agendar aula experimental gratuita</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="form-nome">Nome</label>
+            <input type="text" placeholder="Seu nome">
+          </div>
+          <div class="form-group">
+            <label data-i18n="form-email">E-mail</label>
+            <input type="email" placeholder="seu@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="form-tel">Telefone / WhatsApp</label>
+            <input type="tel" placeholder="+55 ou +56">
+          </div>
+          <div class="form-group">
+            <label data-i18n="form-pais">País</label>
+            <select>
+              <option value="br">🇧🇷 Brasil</option>
+              <option value="cl">🇨🇱 Chile</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form-msg">Mensagem</label>
+          <textarea placeholder="Conte-nos a idade da criança e como podemos ajudar..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;" data-i18n="form-btn">Enviar mensagem</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <!--
+    LOGO NO FOOTER
+    Se quiser colocar a imagem do logo aqui também, adicione:
+    <img src="COLOQUE_AQUI_O_CAMINHO_DO_LOGO.png" alt="Pequeninote" style="height:32px; margin-bottom:0.5rem;">
+  -->
+  <span class="footer-logo">Pequeninote</span>
+  <p>© 2025 Pequeninote · <span data-i18n="footer-txt">Suporte Pedagógico Individualizado</span></p>
+  <p style="margin-top:6px;">Brasil &amp; Chile · <a href="mailto:Pequeninote@gmail.com">Pequeninote@gmail.com</a></p>
+</footer>
+
+<!-- ===== I18N SCRIPT ===== -->
+<script>
+const translations = {
+  pt: {
+    "nav-sobre": "Quem somos",
+    "nav-ativ": "O que fazemos",
+    "nav-como": "Como funciona",
+    "nav-precos": "Preços",
+    "nav-contato": "Contato",
+    "nav-cta-btn": "Aula experimental grátis",
+    "hero-badge": "✨ Educação com afeto e dedicação",
+    "hero-h1": 'O aprendizado de cada criança merece um olhar único.',
+    "hero-desc": "Nós oferecemos um Acompanhamento Educacional Individualizado, com paciência, carinho e compromisso real com o desenvolvimento de cada aluno.",
+    "hero-cta1": "Quero a aula experimental",
+    "hero-cta2": "Conheça o projeto",
+    "hcard-label": "Acompanhamento ativo",
+    "hcard-title": "Plano pedagógico personalizado para cada criança",
+    "chip1": "Alfabetização", "chip2": "Leitura", "chip3": "Escrita", "chip4": "Matemática",
+    "sobre-tag": "Quem está por trás do Pequeninote",
+    "sobre-titulo": "Oi, eu sou a Rayssa 👋",
+    "rayssa-cargo": "Pedagoga · Orientação Educacional",
+    "rayssa-bio": "Sou pedagoga apaixonada pelo desenvolvimento infantil. Meu trabalho vai além do ensino — é sobre construir vínculos, fortalecer a autoconfiança e caminhar junto com cada criança e sua família. Acredito que a educação transforma vidas quando é oferecida com afeto, paciência e responsabilidade.",
+    "diferenciais-titulo": "Meu diferencial",
+    "dif1": "Paciência e afeto", "dif2": "Dedicação individualizada",
+    "dif3": "Responsabilidade e compromisso", "dif4": "Respeito ao ritmo de cada criança",
+    "dif5": "Ambiente acolhedor e seguro", "dif6": "Parceria próxima com a família",
+    "sobre-areas-tag": "Áreas de atuação",
+    "feat1-titulo": "Acompanhamento Pedagógico",
+    "feat1-desc": "Apoio nas dificuldades de aprendizagem e fortalecimento das habilidades fundamentais para o dia a dia na escola.",
+    "feat2-titulo": "Planejamento de atividades",
+    "feat2-desc": "Atividades personalizadas por idade e nível de aprendizagem, tornando o estudo mais leve, criativo e eficiente.",
+    "feat3-titulo": "Comunicação com os pais",
+    "feat3-desc": "Comunicação transparente e próxima com a família, compartilhando avanços, dificuldades e orientações pedagógicas.",
+    "feat4-titulo": "Conteúdo educacional",
+    "feat4-desc": "Materiais, vídeos e orientações para pais e responsáveis sobre aprendizagem e desenvolvimento infantil.",
+    "ativ-tag": "O que trabalhamos juntos",
+    "ativ-titulo": "Tudo pensado para o desenvolvimento da criança",
+    "ativ-sub": "Cada sessão é planejada com atenção e cuidado, combinando aprendizado e ludicidade para que a criança se sinta motivada a crescer.",
+    "ativ1-titulo": "📚 Leitura e Escrita",
+    "ativ1-desc": "Desenvolvimento da alfabetização e fluência leitora com estratégias adaptadas ao ritmo de cada criança.",
+    "ativ1-i1": "Alfabetização inicial", "ativ1-i2": "Leitura e interpretação", "ativ1-i3": "Produção de texto",
+    "ativ2-titulo": "🧠 Concentração e Raciocínio",
+    "ativ2-desc": "Atividades que estimulam a atenção, a memória e o raciocínio lógico de forma prazerosa.",
+    "ativ2-i1": "Exercícios de concentração", "ativ2-i2": "Desenvolvimento cognitivo", "ativ2-i3": "Raciocínio e matemática",
+    "ativ3-titulo": "✏️ Coordenação Motora",
+    "ativ3-desc": "Estimulação da motricidade fina e ampla através de atividades lúdicas e práticas.",
+    "ativ3-i1": "Atividades manuais", "ativ3-i2": "Exercícios de escrita", "ativ3-i3": "Brincadeiras dirigidas",
+    "ativ4-titulo": "🌱 Autonomia e Confiança",
+    "ativ4-desc": "Incentivo ao desenvolvimento da autoestima e da autonomia, para que a criança acredite em si mesma.",
+    "ativ4-i1": "Resolução de problemas", "ativ4-i2": "Tomada de decisões", "ativ4-i3": "Autoconfiança e organização",
+    "ativ5-titulo": "🎨 Atividades Lúdicas",
+    "ativ5-desc": "Aprendizado através do brincar, tornando cada sessão uma experiência divertida e significativa.",
+    "ativ5-i1": "Jogos educativos", "ativ5-i2": "Arte e criatividade", "ativ5-i3": "Brincadeiras pedagógicas",
+    "ativ6-titulo": "💬 Comunicação e Interação",
+    "ativ6-desc": "Estímulo à expressão oral, comunicação e interação social de forma natural e acolhedora.",
+    "ativ6-i1": "Desenvolvimento da fala", "ativ6-i2": "Expressão de emoções", "ativ6-i3": "Participação ativa",
+    "como-tag": "Processo",
+    "como-titulo": "Como funciona o atendimento",
+    "como-sub": "Simples, acolhedor e transparente, para que a família se sinta segura em cada etapa.",
+    "step1-titulo": "Aula experimental",
+    "step1-desc": "A família agenda a aula experimental gratuita para conhecer o trabalho da Professora e ver como a criança se adapta.",
+    "step2-titulo": "Avaliação inicial",
+    "step2-desc": "Observamos as habilidades e necessidades da criança para entender o melhor ponto de partida.",
+    "step3-titulo": "Plano personalizado",
+    "step3-desc": "Criamos um plano de atividades exclusivo, adaptado ao ritmo, à idade e ao perfil de aprendizagem da criança.",
+    "step4-titulo": "Acompanhamento contínuo",
+    "step4-desc": "Sessões regulares com comunicação próxima com a família, falando sobre cada avanço e conquista.",
+    "precos-tag": "Investimento",
+    "precos-titulo": "Planos e valores",
+    "precos-sub": "Comece sem compromisso — a primeira aula é gratuita, para você conhecer e sentir o Pequeninote.",
+    "p1-nome": "🎁 Aula Experimental",
+    "p1-desc": "Voltado a famílias interessadas em conhecer nossa abordagem antes de iniciar o Acompanhamento.",
+    "p1-valor": "Gratuita", "p1-periodo": "uma vez, sem compromisso",
+    "p1-i1": "1 aula completa (sem custo)", "p1-i2": "Conversa inicial com os pais",
+    "p1-i3": "Observação do perfil da criança", "p1-i4": "Sem necessidade de cadastro prévio",
+    "p1-cta": "Agendar aula grátis",
+    "p2-badge": "Mais popular",
+    "p2-nome": "⭐ 1 aula por semana",
+    "p2-desc": "Acompanhamento semanal consistente para evolução gradual e duradoura.",
+    "p2-valor": "200", "p2-periodo": "por semana · 1 aula",
+    "p2-i1": "1 aula individuais por semana", "p2-i2": "Plano pedagógico personalizado",
+    "p2-i3": "Atividades adaptadas ao aluno", "p2-i4": "Retorno para os pais por WhatsApp",
+    "p3-nome": "🚀 2 aulas por semana",
+    "p3-desc": "Para crianças que precisam de mais atenção e um ritmo de evolução mais acelerado.",
+    "p3-valor": "400", "p3-periodo": "por semana · 2 aulas",
+    "p3-i1": "2 aulas individuais por semana", "p3-i2": "Plano pedagógico personalizado",
+    "p3-i3": "Atividades adaptadas ao aluno", "p3-i4": "Retorno frequente para os pais",
+    "p3-i5": "Acompanhamento de evolução mais rápido",
+    "p-cta": "Começar agora",
+    "contato-tag": "Fale com a Rayssa",
+    "contato-titulo": "Vamos conversar?",
+    "contato-sub": "Tire suas dúvidas ou agende já a aula experimental gratuita. Estamos no Brasil e no Chile.",
+    "c-tel-label": "Telefone — Brasil",
+    "c-tel-chile-label": "Telefone — Chile",
+    "c-email-label": "E-mail",
+    "c-hora-label": "Horário de atendimento",
+    "c-hora-val": "Segunda a sexta, 9h–18h",
+    "form-titulo": "Agendar aula experimental gratuita",
+    "form-nome": "Nome", "form-email": "E-mail", "form-tel": "Telefone / WhatsApp",
+    "form-pais": "País", "form-msg": "Mensagem",
+    "form-btn": "Enviar mensagem",
+    "footer-txt": "Acompanhamento Educacional Individualizado"
+  },
+  es: {
+    "nav-sobre": "Quiénes somos",
+    "nav-ativ": "Qué hacemos",
+    "nav-como": "Cómo funciona",
+    "nav-precos": "Precios",
+    "nav-contato": "Contacto",
+    "nav-cta-btn": "Clase experimental",
+    "hero-badge": "✨ Educación con afecto y dedicación",
+    "hero-h1": 'El aprendizaje de cada niño merece una mirada única',
+    "hero-desc": "Nosotros ofrecemos un Acompañamiento Educativo Individualizado, con paciencia, cariño y un compromiso real con el desarrollo de cada alumno.",
+    "hero-cta1": "Quiero la clase experimental",
+    "hero-cta2": "Conoce el proyecto",
+    "hcard-label": "Acompañamiento activo",
+    "hcard-title": "Plan pedagógico personalizado para cada niño",
+    "chip1": "Alfabetización", "chip2": "Lectura", "chip3": "Escritura", "chip4": "Matemática",
+    "sobre-tag": "Quién está detrás de Pequeninote",
+    "sobre-titulo": "Hola, soy Rayssa 👋",
+    "rayssa-cargo": "Pedagoga · Orientación Educacional",
+    "rayssa-bio": "Soy pedagoga apasionada por el desarrollo infantil. Mi trabajo va más allá de la enseñanza — se trata de construir vínculos, fortalecer la autoconfianza y caminar junto a cada niño y su familia. Creo que la educación transforma vidas cuando se ofrece con afecto, paciencia y responsabilidad.",
+    "diferenciais-titulo": "Mi diferencial",
+    "dif1": "Paciencia y afecto", "dif2": "Dedicación individualizada",
+    "dif3": "Responsabilidad y compromiso", "dif4": "Respeto al ritmo de cada niño",
+    "dif5": "Ambiente acogedor y seguro", "dif6": "Alianza cercana con la familia",
+    "sobre-areas-tag": "Áreas de actuación",
+    "feat1-titulo": "Acompañamiento Pedagógico",
+    "feat1-desc": "Apoyo en las dificultades de aprendizaje y fortalecimiento de las habilidades fundamentales para el día a día en la escuela.",
+    "feat2-titulo": "Planificación de actividades",
+    "feat2-desc": "Actividades personalizadas según la edad y nivel de aprendizaje, haciendo el estudio más liviano, creativo y eficiente.",
+    "feat3-titulo": "Comunicación con los padres",
+    "feat3-desc": "Comunicación transparente y cercana con la familia, compartiendo avances, dificultades y orientaciones pedagógicas.",
+    "feat4-titulo": "Contenido educativo",
+    "feat4-desc": "Materiales, videos y orientaciones para padres y tutores sobre aprendizaje y desarrollo infantil.",
+    "ativ-tag": "Lo que trabajamos juntos",
+    "ativ-titulo": "Todo pensado para el desarrollo del niño",
+    "ativ-sub": "Cada sesión es planificada con atención y cuidado, combinando aprendizaje y juego para que el niño se sienta motivado a crecer.",
+    "ativ1-titulo": "📚 Lectura y Escritura",
+    "ativ1-desc": "Desarrollo de la alfabetización y fluidez lectora con estrategias adaptadas al ritmo de cada niño.",
+    "ativ1-i1": "Alfabetización inicial", "ativ1-i2": "Lectura e interpretación", "ativ1-i3": "Producción de texto",
+    "ativ2-titulo": "🧠 Concentración y Razonamiento",
+    "ativ2-desc": "Actividades que estimulan la atención, la memoria y el razonamiento lógico de forma placentera.",
+    "ativ2-i1": "Ejercicios de concentración", "ativ2-i2": "Desarrollo cognitivo", "ativ2-i3": "Razonamiento y matemáticas",
+    "ativ3-titulo": "✏️ Coordinación Motora",
+    "ativ3-desc": "Estimulación de la motricidad fina y gruesa a través de actividades lúdicas y prácticas.",
+    "ativ3-i1": "Actividades manuales", "ativ3-i2": "Ejercicios de escritura", "ativ3-i3": "Juegos dirigidos",
+    "ativ4-titulo": "🌱 Autonomía y Confianza",
+    "ativ4-desc": "Incentivo al desarrollo de la autoestima y la autonomía, para que el niño crea en sí mismo.",
+    "ativ4-i1": "Resolución de problemas", "ativ4-i2": "Toma de decisiones", "ativ4-i3": "Autoconfianza y organización",
+    "ativ5-titulo": "🎨 Actividades Lúdicas",
+    "ativ5-desc": "Aprendizaje a través del juego, haciendo de cada sesión una experiencia divertida y significativa.",
+    "ativ5-i1": "Juegos educativos", "ativ5-i2": "Arte y creatividad", "ativ5-i3": "Juegos pedagógicos",
+    "ativ6-titulo": "💬 Comunicación e Interacción",
+    "ativ6-desc": "Estímulo a la expresión oral, la comunicación y la interacción social de forma natural y acogedora.",
+    "ativ6-i1": "Desarrollo del habla", "ativ6-i2": "Expresión de emociones", "ativ6-i3": "Participación activa",
+    "como-tag": "Proceso",
+    "como-titulo": "Cómo funciona la atención",
+    "como-sub": "Simple, acogedor y transparente, para que la familia se sienta segura en cada etapa.",
+    "step1-titulo": "Clase experimental",
+    "step1-desc": "La familia agenda la clase experimental gratuita para conocer el trabajo de la Profesora y ver cómo se adapta el niño.",
+    "step2-titulo": "Evaluación inicial",
+    "step2-desc": "Observamos las habilidades y necesidades del niño para entender el mejor punto de partida.",
+    "step3-titulo": "Plan personalizado",
+    "step3-desc": "Creamos un plan de actividades exclusivo, adaptado al ritmo, la edad y el perfil de aprendizaje del niño.",
+    "step4-titulo": "Acompañamiento continuo",
+    "step4-desc": "Sesiones regulares con comunicación cercana con la familia, hablando sobre cada avance y logro.",
+    "precos-tag": "Inversión",
+    "precos-titulo": "Planes y valores",
+    "precos-sub": "Empieza sin compromiso — la primera clase es gratuita, para que conozcas y sientas Pequeninote.",
+    "p1-nome": "🎁 Clase Experimental",
+    "p1-desc": "Dirigido a familias interesadas en conocer nuestro enfoque antes de comenzar el Acompañamiento.",
+    "p1-valor": "Gratuita", "p1-periodo": "una vez, sin compromiso",
+    "p1-i1": "1 clase completa (sin costo)", "p1-i2": "Conversación inicial con los padres",
+    "p1-i3": "Observación del perfil del niño", "p1-i4": "Sin necesidad de registro previo",
+    "p1-cta": "Agendar clase gratis",
+    "p2-badge": "Más popular",
+    "p2-nome": "⭐ 1 clase por semana",
+    "p2-desc": "Acompañamiento semanal consistente para una evolución gradual y duradera.",
+    "p2-valor": "55.000", "p2-periodo": "por semana · 1 clase",
+    "p2-i1": "1 clase individual por semana", "p2-i2": "Plan pedagógico personalizado",
+    "p2-i3": "Actividades adaptadas al alumno", "p2-i4": "Retroalimentación a los padres por WhatsApp",
+    "p3-nome": "🚀 2 clases por semana",
+    "p3-desc": "Para niños que necesitan más atención y un ritmo de evolución más acelerado.",
+    "p3-valor": "110.000", "p3-periodo": "por semana · 2 clases",
+    "p3-i1": "2 clases individuales por semana", "p3-i2": "Plan pedagógico personalizado",
+    "p3-i3": "Actividades adaptadas al alumno", "p3-i4": "Retroalimentación frecuente a los padres",
+    "p3-i5": "Seguimiento de evolución más rápido",
+    "p-cta": "Comenzar ahora",
+    "contato-tag": "Habla con Rayssa",
+    "contato-titulo": "¿Conversamos?",
+    "contato-sub": "Resuelve tus dudas o agenda ya la clase experimental gratuita. Estamos en Brasil y Chile.",
+    "c-tel-label": "Teléfono — Brasil",
+    "c-tel-chile-label": "Teléfono — Chile",
+    "c-email-label": "Correo electrónico",
+    "c-hora-label": "Horario de atención",
+    "c-hora-val": "Lunes a viernes, 9h–18h",
+    "form-titulo": "Agendar clase experimental gratuita",
+    "form-nome": "Nombre", "form-email": "Correo", "form-tel": "Teléfono / WhatsApp",
+    "form-pais": "País", "form-msg": "Mensaje",
+    "form-btn": "Enviar mensaje",
+    "footer-txt": "Acompañamiento Educativo Individualizado"
+  }
+};
+
+let currentLang = 'pt';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Preço moeda: no ES os valores já estão em CLP no objeto
+  // Esconde o prefixo "R$" no card grátis no ES também
+  const cifras = document.querySelectorAll('.preco-cifra');
+  cifras.forEach(c => { c.textContent = lang === 'es' ? 'CLP$' : 'R$'; });
+
+  document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-pt').setAttribute('aria-pressed', String(lang === 'pt'));
+  document.getElementById('btn-es').setAttribute('aria-pressed', String(lang === 'es'));
+
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'es-CL';
+}
+</script>
+</body>
+</html>
